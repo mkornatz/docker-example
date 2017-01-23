@@ -1,0 +1,31 @@
+version: '2'
+
+volumes:
+  database_data:
+    driver: local
+
+services:
+  web:
+    # Builds a custom container using the Dockerfile in this directory
+    build: ./docker/ubuntu16-apache2-php7.0
+    
+    # This maps http://<docker-host-ip>:8080/ to port 80 of the container
+    ports:
+      - "8080:80"
+    volumes:
+      # Mount the current directory to the container for apache2
+      - .:/var/www/html
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    expose:
+      - 3306
+    volumes:
+      - database_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ourlittlesecret
+      MYSQL_DATABASE: example
+      MYSQL_USER: develop
+      MYSQL_PASSWORD: 0n3D3s1gn!
