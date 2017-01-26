@@ -7,14 +7,14 @@
 #### macOS
 
 Docker:
-* docker-compose - 
-* docker-machine - 
+* docker-compose - reads `docker-compose.yml` and manages containers.
+* docker-machine - runs the containers
 
 ```
 brew install docker-compose docker-machine
 ```
 
-Virtualbox:
+Virtualbox - runs a VM within which containers are run:
 ```
 brew tap caskroom/cask
 brew install brew-cask
@@ -30,10 +30,9 @@ Create a docker machine via virtualbox:
 docker-machine create -d virtualbox default
 ```
 
-Set docker environment variables (and persist them):
+Set docker environment variables (remember this as you may need to use it again):
 ```
-docker-machine env
-eval "$(docker-machine env dev)"
+eval "$(docker-machine env default)"
 ```
 
 ### 3. Turn it on
