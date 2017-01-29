@@ -43,7 +43,7 @@ ADD config/php.ini /etc/php/7.0/apache2/php.ini
 #
 # This is useful for something like php writing to /var/www/html/logs
 #
-# NOTE: This UID and Group are based on macOS hosted volumes.
+# NOTE: This UID and Group are based on boot2docker hosted volumes.
 #       You may need to change these based on your configuration.
 RUN usermod -u 1000 www-data
 RUN usermod -G staff www-data
