@@ -6,14 +6,18 @@ volumes:
 
 services:
   web:
-    # Builds a custom container using the Dockerfile in this directory
-    build: ./docker/ubuntu16-apache2-php7.0
+    image: mkornatz/ubuntu16-apache2-php7.0:latest
+    environment:
+      APACHE_SERVER_NAME: localhost
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
     ports:
       # This maps http://<docker-host-ip>:8080/ to port 80 of the container
       - "8080:80"
     volumes:
       # Mount the current directory to the container for apache2
       - .:/var/www/html
+      # Mount the vhost config to override the default site
+      - ./docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
     depends_on:
       - mysql
 
