@@ -38,8 +38,16 @@ RUN chmod 755 /*.sh
 ADD config/vhost.conf /etc/apache2/sites-available/000-default.conf
 ADD config/php.ini /etc/php/7.0/apache2/php.ini
 
-# Sets permissions for www-data to own /var/www/html
+# Sets up the www-data user with the UID of host user in order to own 
+# www directories.
+#
+# This is useful for something like php writing to /var/www/html/logs
+#
+# NOTE: This UID and Group are based on macOS hosted volumes.
+#       You may need to change these based on your configuration.
 RUN usermod -u 1000 www-data
+RUN usermod -G staff www-data
+RUN chown -R www-data:www-data /var/www
 
 CMD ["/bin/bash", "/start.sh"]
 
