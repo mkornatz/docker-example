@@ -16,8 +16,6 @@ services:
     volumes:
       # Mount the current directory to the container for apache2
       - .:/var/www/html
-      # Mount the vhost config to override the default site
-      - ./docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
     depends_on:
       - mysql
 
