@@ -1,7 +1,7 @@
 version: '2'
 
 volumes:
-  database_data:
+  data_volume:
     driver: local
 
 services:
@@ -23,7 +23,7 @@ services:
     expose:
       - 3306
     volumes:
-      - database_data:/var/lib/mysql
+      - data_volume:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ourlittlesecret
       MYSQL_DATABASE: example

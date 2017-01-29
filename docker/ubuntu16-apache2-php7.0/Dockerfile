@@ -38,6 +38,8 @@ RUN chmod 755 /*.sh
 ADD config/vhost.conf /etc/apache2/sites-available/000-default.conf
 ADD config/php.ini /etc/php/7.0/apache2/php.ini
 
+# Sets permissions for www-data to own /var/www/html
+RUN usermod -u 1000 www-data
 
 CMD ["/bin/bash", "/start.sh"]
 
