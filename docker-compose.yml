@@ -8,9 +8,8 @@ services:
   web:
     # Builds a custom container using the Dockerfile in this directory
     build: ./docker/ubuntu16-apache2-php7.0
-    
-    # This maps http://<docker-host-ip>:8080/ to port 80 of the container
     ports:
+      # This maps http://<docker-host-ip>:8080/ to port 80 of the container
       - "8080:80"
     volumes:
       # Mount the current directory to the container for apache2
