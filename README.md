@@ -53,3 +53,18 @@ This will open the site in your default browser:
 open "http://$(docker-machine ip default):8080"
 ```
 
+### 5. Troubleshoot it
+
+You can get a bash shell into your container. First, you need to get the container ID.
+
+```
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+3d5368e3dbb3        dockerexample_web   "/bin/bash /start.sh"    23 minutes ago      Up 20 minutes       0.0.0.0:8080->80/tcp   dockerexample_web_1
+a235069ec1c1        mysql:5.7           "docker-entrypoint..."   23 minutes ago      Up 20 minutes       3306/tcp               dockerexample_mysql_1
+```
+
+Use the CONTAINER ID to get a bash shell:
+```
+$ docker exec -it 3d5368e3dbb3 bash
+```
