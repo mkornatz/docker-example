@@ -30,6 +30,11 @@ Create a docker machine via virtualbox:
 docker-machine create -d virtualbox default
 ```
 
+Start the machine:
+```
+docker-machine start default
+```
+
 Set docker environment variables (remember this as you may need to use it again):
 ```
 eval "$(docker-machine env default)"

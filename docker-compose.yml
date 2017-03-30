@@ -29,4 +29,4 @@ services:
       MYSQL_ROOT_PASSWORD: ourlittlesecret
       MYSQL_DATABASE: example
       MYSQL_USER: develop
-      MYSQL_PASSWORD: 0n3D3s1gn!
+      MYSQL_PASSWORD: developpass
